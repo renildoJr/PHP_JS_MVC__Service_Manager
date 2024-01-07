@@ -1,0 +1,1 @@
+<span><strong>SG</strong> copyright &copy; <?= Date("Y") ?> - All Rights Reserved.</span>
