@@ -10,10 +10,11 @@ class ProdutoModel {
         $this->rows = $dao->select(); 
     }
 
-    public function selectById(int $id) {
-        // include "DAO/ProdutoDAO.php";
-        // $dao = new ProdutoDAO();
-        // $dao->select($id); 
+    public function getById(int $id) {
+        include "DAO/ProdutoDAO.php";
+        $dao = new ProdutoDAO();
+        $obj = $dao->selectById($id); 
+        return ($obj) ? $obj : new ProdutoModel();
     }
 
     public function insert() {

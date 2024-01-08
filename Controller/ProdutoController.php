@@ -11,6 +11,13 @@ class ProdutoController {
     }
 
     public static function form() {
+        include "Model/ProdutoModel.php";
+        $model = new ProdutoModel();
+        
+        if(isset($_GET["id"])) {
+            $model = $model->getById((int) $_GET["id"]);
+        }
+
         include "View/modules/Produto/formProdutos.php";
     }
     

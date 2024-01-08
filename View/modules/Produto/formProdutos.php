@@ -19,15 +19,18 @@
     <!-- Main -->
     <main class="page-main">
         <div class="container">
-            <h1 class="page-title">Cadastro de Produto</h1>
+            <h1 class="page-title"><?= isset($_GET["id"]) ? "Alterar Produto" : "Cadastro de Produto"?></h1>
             <form action="<?= LINK_VIEW_PRODUTOS_FORM?>/save" method="POST">
                 <label for="prod_nome">Nome</label>
-                <input type="text" name="prod_nome" id="prod_nome" placeholder="ex: Caixa de Ferramentas">
+                <input type="text" name="prod_nome" id="prod_nome" value="<?=$model->nome ?>" placeholder="ex: Caixa de Ferramentas">
                 <!-- <p class="msg msg-input msg-input--error">Preencha este campo corretamente.</p> -->
                 <label for="prod_desc">Descrição</label>
-                <input type="text" name="prod_desc" id="prod_desc" placeholder="ex: este produto serve para....">
-                <input type="submit" class="btn btn--primary" value="Cadastrar">
+                <input type="text" name="prod_desc" id="prod_desc" value="<?=$model->descricao ?>" placeholder="ex: este produto serve para....">
+                <input type="submit" class="btn btn--primary" value="<?= isset($_GET["id"]) ? "Salvar" : "Cadastrar"?>">
             </form>
+            <?php if(isset($_GET["id"])) : ?>
+                <a href="<?=LINK_VIEW_PRODUTOS?>">Voltar</a>
+            <?php endif ?>
         </div>
     </main>
     <!-- Main end -->

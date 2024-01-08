@@ -9,14 +9,19 @@ class ProdutoDAO {
     }
 
     public function select(int $id = null) {
-        if($id != null) {
-            $sql = "SELECT * FROM produto WHERE id = $id";
-        }else {
-            $sql = "SELECT * FROM produto";
-        }
+        $sql = "SELECT * FROM produto";
         $stmt = $this->con->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function selectById(int $id) {
+        include_once "Model/ProdutoModel.php";
+        $sql = "SELECT * FROM produto WHERE id = ?";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+        return $stmt->fetchObject();
     }
 
     public function insert(ProdutoModel $model) {
