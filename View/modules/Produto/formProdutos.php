@@ -21,6 +21,7 @@
         <div class="container">
             <h1 class="page-title"><?= isset($_GET["id"]) ? "Alterar Produto" : "Cadastro de Produto"?></h1>
             <form action="<?= LINK_VIEW_PRODUTOS_FORM?>/save" method="POST">
+                <input type="hidden" name="prod_id" value="<?=$model->id?>">
                 <label for="prod_nome">Nome</label>
                 <input type="text" name="prod_nome" id="prod_nome" value="<?=$model->nome ?>" placeholder="ex: Caixa de Ferramentas">
                 <!-- <p class="msg msg-input msg-input--error">Preencha este campo corretamente.</p> -->

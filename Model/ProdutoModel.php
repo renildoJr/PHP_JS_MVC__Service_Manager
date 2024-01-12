@@ -1,25 +1,31 @@
 <?php
 
 class ProdutoModel {
-    public $id, $nome, $desc;
+    public $id, $nome, $descricao;
     public $rows;
 
-    public function selectAll() {
-        include "DAO/ProdutoDAO.php";
+    public function getAllRows() {
         $dao = new ProdutoDAO();
         $this->rows = $dao->select(); 
     }
 
     public function getById(int $id) {
-        include "DAO/ProdutoDAO.php";
         $dao = new ProdutoDAO();
         $obj = $dao->selectById($id); 
         return ($obj) ? $obj : new ProdutoModel();
     }
 
-    public function insert() {
-        include "DAO/ProdutoDAO.php";
+    public function save() {
         $dao = new ProdutoDAO();
-        $dao->insert($this);
+        if(empty($this->id)) {
+            $dao->insert($this);
+        }else {
+            $dao->update($this);
+        }
+    }
+
+    public function delete(int $id) {
+        $dao = new ProdutoDAO();
+        $dao->delete($id);
     }
 }

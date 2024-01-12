@@ -8,7 +8,7 @@ class ProdutoDAO {
         $this->con = $con;
     }
 
-    public function select(int $id = null) {
+    public function select() {
         $sql = "SELECT * FROM produto";
         $stmt = $this->con->prepare($sql);
         $stmt->execute();
@@ -16,7 +16,6 @@ class ProdutoDAO {
     }
 
     public function selectById(int $id) {
-        include_once "Model/ProdutoModel.php";
         $sql = "SELECT * FROM produto WHERE id = ?";
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(1, $id);
@@ -28,7 +27,23 @@ class ProdutoDAO {
         $sql = "INSERT INTO produto (nome, descricao) VALUES (?, ?)";
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(1, $model->nome);
-        $stmt->bindValue(2, $model->desc);
+        $stmt->bindValue(2, $model->descricao);
+        $stmt->execute();
+    }
+
+    public function update(ProdutoModel $model) {
+        $sql = "UPDATE produto SET nome = ?, descricao = ? WHERE id = ?";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindValue(1, $model->nome);
+        $stmt->bindValue(2, $model->descricao);
+        $stmt->bindValue(3, $model->id);
+        $stmt->execute();
+    }
+
+    public function delete(int $id) {
+        $sql = "DELETE FROM produto WHERE id = ?";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindValue(1, $id);
         $stmt->execute();
     }
 }

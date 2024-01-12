@@ -23,6 +23,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Descrição</th>
@@ -31,6 +32,7 @@
                 <tbody>
                     <?php foreach($model->rows as $row) : ?>
                     <tr>
+                        <td><a href="<?=LINK_VIEW_PRODUTOS."?id={$row->id}"?>"class="fa-solid fa-trash"></a></td>
                         <td><?=$row->id?></td>
                         <td><a href="<?=LINK_VIEW_PRODUTOS_FORM?>?id=<?= $row->id?>"><?=$row->nome?></a></td>
                         <td><?=$row->descricao?></td>
