@@ -1,5 +1,8 @@
 <?php
 
+namespace src\Controller;
+use src\Model\ProdutoModel;
+
 class ProdutoController {
     public static function index() {
         $model = new ProdutoModel();
@@ -9,7 +12,7 @@ class ProdutoController {
         }
         $model->getAllRows();
         $model->rows;
-        include "View/modules/Produto/listProdutos.php";
+        include "src/View/modules/Produto/listProdutos.php";
     }
 
     public static function form() {
@@ -17,7 +20,7 @@ class ProdutoController {
         if(isset($_GET["id"])) {
             $model = $model->getById((int) $_GET["id"]);
         }
-        include "View/modules/Produto/formProdutos.php";
+        include "src/View/modules/Produto/formProdutos.php";
     }
     
     public static function save() {

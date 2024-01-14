@@ -1,11 +1,15 @@
 <?php
 
+namespace src\DAO;
+use \PDO;
+use src\Model\ProdutoModel;
+
 class ProdutoDAO {
     private $con;
 
     public function __construct() {
         include "config.php";
-        $this->con = $con;
+        $this->con = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
     }
 
     public function select() {

@@ -1,5 +1,8 @@
 <?php
 
+namespace src\Model;
+use src\DAO\ProdutoDAO;
+
 class ProdutoModel {
     public $id, $nome, $descricao;
     public $rows;
