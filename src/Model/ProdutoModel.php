@@ -3,9 +3,8 @@
 namespace src\Model;
 use src\DAO\ProdutoDAO;
 
-class ProdutoModel {
+class ProdutoModel extends Model {
     public $id, $nome, $descricao;
-    public $rows;
 
     public function getAllRows() {
         $dao = new ProdutoDAO();

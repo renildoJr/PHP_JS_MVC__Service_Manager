@@ -3,7 +3,7 @@
 namespace src\Controller;
 use src\Model\ProdutoModel;
 
-class ProdutoController {
+class ProdutoController extends Controller {
     public static function index() {
         $model = new ProdutoModel();
         if(isset($_GET["id"])) {
@@ -12,7 +12,8 @@ class ProdutoController {
         }
         $model->getAllRows();
         $model->rows;
-        include "src/View/modules/Produto/listProdutos.php";
+        // include "src/View/modules/Produto/listProdutos.php";
+        parent::render("Produto/listProdutos", $model);
     }
 
     public static function form() {
@@ -20,7 +21,7 @@ class ProdutoController {
         if(isset($_GET["id"])) {
             $model = $model->getById((int) $_GET["id"]);
         }
-        include "src/View/modules/Produto/formProdutos.php";
+        parent::render("Produto/formProdutos", $model);
     }
     
     public static function save() {
