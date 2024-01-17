@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+:root {
+    /* Typography */
+    font-size: 62.5%;
+
+    /* Colors */
+    --color-primary1: #1970e2;
+    --color-additional1: #0516b1;
+    --color-primary2: #ff790b;
+    --color-text1: #131313;
+    --color-text2: #ffffff;
+    --color-text3: #cecece;
+    --color-background1: #ffffff;
+    --color-background2: var(--color-text1);
+    --color-background3: var(--color-text3);
+
+    /* Message Styling */
+    --msg-text-color1: #f1f1f1;
+    --msg-text-color2: #161616;
+    --msg-default-background: radial-gradient(circle, rgba(96,147,243,1) 0%, rgba(0,72,207,1) 100%);
+    --msg-success-background: radial-gradient(circle, rgba(7,153,43,1) 0%, rgba(57,238,102,1) 100%);
+    --msg-warn-background: radial-gradient(circle, #ffa500 0%, rgba(175,120,21,1) 100%);
+    --msg-error-background: radial-gradient(circle, rgba(250,49,49,1) 0%, rgba(166,22,22,1) 100%);
+    --msg-input-default-background: #89adf0;
+    --msg-input-default-border: 2px solid #6093f3;
+    --msg-input-success-background: #49d66c;
+    --msg-input-success-border: #07992b;
+    --msg-input-warn-background: #f7c66c;
+    --msg-input-warn-border: #ffa500;
+    --msg-input-error-background: #f07c7c ;
+    --msg-input-error-border: #f74c4c ;
+
+    /* Sizes */
+    --size-header: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-background1);
+    color: var(--color-text1);
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.col-2 {
+    display: flex;
+}
+
+/* 
+----------------
+Buttons 
+---------------
+*/
+
+.btn {
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    transition: .3s ease-in-out;
+}
+
+.btn--primary {
+    background: var(--color-primary1);
+    color: var(--color-text2);
+    font-weight: 800;
+    box-shadow: 0 0 6px 1px #00000033;
+}
+
+.btn--primary:hover {
+    background: var(--color-additional1);
+}
+
+.btn--type-text {
+    background: none;
+}
+
+.btn-close {
+    /* Parent Element should be position: relative */
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn-close.btn--type-text {
+    color: var(--text-color3);
+}
+
+/*
+-------------
+Typography
+-------------
+*/
+.heading {
+    font-weight: 900;
+}
+
+.heading.hd-1 {
+   font-size: 4rem;
+}
+
+
+.heading.hd-3 {
+    font-size: 2rem;
+}
+
+.small-text {
+    font-size: 1rem;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+/*----------------
+    Messages
+-------------- */
+.msg {
+    /* display: none; */
+    color: var(--msg-text-color1);
+    background: var(--msg-default-background);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.msg-top {
+    position: absolute;
+    top: var(--size-header);
+    left: 0;
+    width: 100%;
+    z-index: 70;
+}
+
+.msg-input {
+    background: var(--msg-input-default-background);
+    padding: 10px;
+    position: relative;
+    background: var(--msg-input-default-background);
+    border: 2px solid var(--msg-input-default-border);
+    border-radius: 5px;
+    /* margin-top: -15px; */
+    margin-bottom: 20px;
+}
+
+/* Message Type > Message Top Modifiers */
+.msg-top.msg--success {
+    background: var(--msg-success-background);
+}
+
+.msg-top.msg--warn {
+    background: var(--msg-warn-background);
+}
+
+.msg-top.msg--error {
+    background: var(--msg-error-background);
+}
+
+/* Message Type > Message Top Modifiers Alternative */
+.msg-top.msg--alt {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+/* Message Type > Message Input Modifiers */
+.msg-input.msg--success {
+    background: var(--msg-input-success-background);
+    border: 2px solid  var(--msg-input-success-border);
+}
+
+.msg-input.msg--warn {
+    background: var(--msg-input-warn-background);
+    border: 2px solid var(--msg-input-warn-border);
+}
+
+.msg-input.msg--error {
+    background: var(--msg-input-error-background);
+    border: 2px solid var(--msg-input-error-border);
+}
+
+/* Message Type > Message Input Alternative*/
+.msg-input.msg--alt {
+    background: none;
+    border: none;
+    color: var(--msg-text-color2);
+}
+
+.msg-input.msg--alt.msg--success {
+    color: var(--msg-input-success-border)
+}
+
+.msg-input.msg--alt.msg--warn {
+    color: var(--msg-input-warn-border)
+}
+
+.msg-input.msg--alt.msg--error {
+    color: var(--msg-input-error-border)
+}
+
+
+/* 
+-----------------
+Forms 
+-----------------
+*/
+
+.form input:focus {
+    outline-color: var(--color-primary1);
+}
+
+.form {
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 16px;
+    background: var(--color-background1);
+    box-shadow: 0 0 8px 1px #0000002c;
+    margin-top: 50px;
+}
+
+.form .msg-input.msg--alt {
+    margin-top: -20px;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.form label,
+.form input {
+    display: block;
+}
+
+.form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--color-background3);
+    border-radius: 8px;
+}
+
+.form p {
+    color: var(--color-text3);
+    text-align: center;
+}
+
+.form__header {
+    position: relative;
+    border-bottom: 1px solid var(--form-border1);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    margin-bottom: 20px;
+}
+
+.form__header__title {
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.form__footer {
+    border-top: 1px solid var(--form-border1);
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.header {
+    background: var(--color-primary1);
+    box-shadow: 2px 2px 6px 2px #00000042;
+}
+
+.header__navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--size-header);
+}
+
+.header__navbar .logo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color-text2);
+}
+
+.header__navbar .menu {
+    display: flex;
+    align-items: center;
+    height: var(--size-header);
+}
+
+.header__navbar .menu li {
+    height: 100%;
+    position: relative;
+}
+
+.header__navbar .menu li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 25px;
+    transition: .3s ease-in-out;
+    color: var(--color-text2);
+}
+
+.header__navbar .menu li.link--active > a,
+.header__navbar .menu li:hover > a,
+.header__navbar .menu .menu__dropdown__submenu li a:hover {
+   background: var(--color-primary2);
+}
+
+.header__navbar .menu__dropdown > a::after {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.header__navbar .menu__dropdown:hover > .menu__dropdown__submenu {
+   display: block;
+}
+
+.header__navbar .menu__dropdown__submenu {
+   display: none;
+   min-width: 150px;
+   background: var(--color-primary1);
+   position: absolute;
+   z-index: 100;
+   box-shadow: 2px 2px 6px 2px #00000042;
+}
+
+.header__navbar .menu__dropdown__submenu li {
+   border-bottom: 1px solid #00000036;
+}
+
+.header__navbar .menu__dropdown__submenu li:last-child {
+   border-bottom: none;
+}
+
+/* .sidebar {
+    background: var(--color-primary1);
+    max-width: 350px;
+    width: 100%;
+    padding: 20px;
+} */
+
+.main {
+    width: 100%;
+    height: calc(100vh - var(--size-header));
+    padding: 20px;
+}
+
+.footer {
+    background: var(--color-background2);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer .container {
+    min-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .copy {
+    color: var(--color-text2);
+}
+.footer .copy a {
+    color: var(--color-text2);
+}

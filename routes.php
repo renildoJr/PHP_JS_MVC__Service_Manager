@@ -1,23 +1,24 @@
-<?php
+<?php 
 
-use src\Controller\ProdutoController;
-
-define("LINK_HOST", "http://localhost:3000");
-define("LINK_VIEW_PRODUTOS", "/produtos");
-define("LINK_VIEW_PRODUTOS_FORM", "/produtos/form");
+use src\controllers\ClienteController;
 
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 switch($url) {
-    case "/":
-        include "src/View/home.php";
+    case '/':
+        include LINK_VIEWS.'/home.php';
         break;
-    case LINK_VIEW_PRODUTOS:
-        ProdutoController::index();
+    case LINK_CLIENTE:
+        ClienteController::index();
         break;
-    case LINK_VIEW_PRODUTOS_FORM:
-        ProdutoController::form();
+    case LINK_CLIENTE_FORM:
+        ClienteController::form();
         break;
-    case LINK_VIEW_PRODUTOS_FORM."/save":
-        ProdutoController::save();
+    case LINK_CLIENTE_FORM.'/save':
+        ClienteController::save();
+        break;
+    default:
+        include LINK_VIEWS.'/404.php';
+        break;
 }
+include LINK_VIEWS.'/includes/footer.php';
