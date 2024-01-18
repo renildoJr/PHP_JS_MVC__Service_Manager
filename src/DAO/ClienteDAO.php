@@ -39,8 +39,14 @@ class ClienteDAO extends DAO {
         $stmt->bindValue(7, $model->end_bairro);
         $stmt->bindValue(8, $model->end_estado);
         $stmt->bindValue(9, $model->end_cidade);
+
+        int $i = 1;
+        foreach($module as $key=>$val) {
+          if(
+            $stmt->bindValue($i, $model->$key);
+        }
     
-        $stmt->execute();
+        //$stmt->execute();
     }
 
     public function update(ClienteModel $model) {
