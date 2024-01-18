@@ -22,9 +22,9 @@
     <label for="input_end_bairro">Bairro</label>
     <input type="text" name="input_end_bairro" id="input_end_bairro" placeholder="ex: San Martin" value="">
     <label for="input_end_cidade">Cidade</label>
-    <input type="text" name="input_end_cidade" id="input_end_cidade" placeholder="ex: San Martin" value="">
+    <input type="text" name="input_end_cidade" id="input_end_cidade" placeholder="ex: Recife" value="">
     <label for="input_end_estado">Estado</label>
-    <input type="text" name="input_end_estado" id="input_end_estado" placeholder="ex: San Martin" value="">
+    <input type="text" name="input_end_estado" id="input_end_estado" placeholder="ex: PE" value="">
     <div class="msg-input msg--alt msg--error">Must contain 1 uppercase letter, 1 number, min. 8 characters.</div>
     <input class="btn btn--primary" type="submit" value="Cadastrar">
 </form>

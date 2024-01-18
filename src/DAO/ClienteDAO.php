@@ -60,6 +60,11 @@ class ClienteDAO extends DAO {
         $stmt->bindValue(8, $model->end_estado);
         $stmt->bindValue(9, $model->end_cidade);
         $stmt->bindValue(10, $model->id);
+
+
+        for()
+
+
         $stmt->execute();
     }
 
