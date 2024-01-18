@@ -29,8 +29,7 @@ class ClienteDAO extends DAO {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
         
         $stmt = $this->con->prepare($sql);
-    
-<<<<<<< HEAD
+        
         $index = 1;
         foreach($model as $key=>$val) {
             if($key != "id"){
@@ -40,27 +39,6 @@ class ClienteDAO extends DAO {
         }
 
         $stmt->execute();
-=======
-        //$stmt->bindValue(1,$model->nomeCompleto);
-        //$stmt->bindValue(2, $model->telefone);
-        //$stmt->bindValue(3, $model->end_cep);
-        //$stmt->bindValue(4, $model->end_rua);
-        //$stmt->bindValue(5, $model->end_num);
-        //$stmt->bindValue(6, $model->end_comp);
-        //$stmt->bindValue(7, $model->end_bairro);
-        //$stmt->bindValue(8, $model->end_estado);
-        //$stmt->bindValue(9, $model->end_cidade);
-
-        int $i = 1;
-        foreach($module as $key=>$val) {
-          if($key != "id") {
-             $stmt->bindValue($i, $model->$key);
-             $i++;
-          }
-        }
-    
-        //$stmt->execute();
->>>>>>> 1c823f2285cb7c6ab8ac076aa573bea34187cea4
     }
 
     public function update(ClienteModel $model) {
@@ -70,7 +48,6 @@ class ClienteDAO extends DAO {
     
         $stmt = $this->con->prepare($sql);
 
-<<<<<<< HEAD
         $index = 1;
         foreach($model as $key=>$val) {
             if($key != "id"){
@@ -81,16 +58,6 @@ class ClienteDAO extends DAO {
 
         $stmt->bindValue($index, $model->id);
         $stmt->execute();
-=======
-        int $i = 1;
-        foreach($module as $key=>$val) {
-          if($key != "id") {
-            $stmt->bindValue($i, $model->$key);
-            $i++; 
-          }
-        }
-        $stmt->bindValue($i, $model->$id)          $stmt->execute();
->>>>>>> 1c823f2285cb7c6ab8ac076aa573bea34187cea4
     }
 
     public function delete(int $id) {
