@@ -32,7 +32,8 @@
     --msg-input-error-border: #f74c4c ;
 
     /* Sizes */
-    --size-header: 60px;
+    --size-header: 50px;
+    --default-margin: 50px;
 }
 
 * {
@@ -118,7 +119,7 @@ Typography
 }
 
 .small-text {
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .txt-center {
@@ -154,7 +155,6 @@ Typography
     background: var(--msg-input-default-background);
     border: 2px solid var(--msg-input-default-border);
     border-radius: 5px;
-    /* margin-top: -15px; */
     margin-bottom: 20px;
 }
 
@@ -235,7 +235,7 @@ Forms
 
 .form .msg-input.msg--alt {
     margin-top: -20px;
-    font-size: .9rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
@@ -272,7 +272,6 @@ Forms
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-
     margin-bottom: 20px;
 }
 
@@ -292,6 +291,13 @@ Forms
     gap: 5px;
 }
 
+/* FORM CUSTOM INPUTS */
+.divider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -302,6 +308,7 @@ Forms
 .header {
     background: var(--color-primary1);
     box-shadow: 2px 2px 6px 2px #00000042;
+    margin-bottom: var(--default-margin);
 }
 
 .header__navbar {
@@ -309,6 +316,7 @@ Forms
     justify-content: space-between;
     align-items: center;
     min-height: var(--size-header);
+    flex-wrap: wrap;
 }
 
 .header__navbar .logo {
@@ -320,7 +328,8 @@ Forms
 .header__navbar .menu {
     display: flex;
     align-items: center;
-    height: var(--size-header);
+    min-height: var(--size-header);
+    flex-wrap: wrap;
 }
 
 .header__navbar .menu li {
@@ -333,9 +342,9 @@ Forms
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    padding: 25px;
+    padding: 20px;
     transition: .3s ease-in-out;
     color: var(--color-text2);
 }
@@ -381,17 +390,18 @@ Forms
     padding: 20px;
 } */
 
-.main {
+/* .main {
     width: 100%;
     height: calc(100vh - var(--size-header));
     padding: 20px;
-}
+} */
 
 .footer {
     background: var(--color-background2);
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0;
+    margin-top: var(--default-margin);
 }
 
 .footer .container {
@@ -404,6 +414,7 @@ Forms
 .footer .copy {
     color: var(--color-text2);
 }
+
 .footer .copy a {
     color: var(--color-text2);
 }

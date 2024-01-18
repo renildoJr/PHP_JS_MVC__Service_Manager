@@ -4,6 +4,8 @@ use src\controllers\ClienteController;
 
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
+include LINK_VIEWS.'/includes/header.php';
+
 switch($url) {
     case '/':
         include LINK_VIEWS.'/home.php';
@@ -21,4 +23,5 @@ switch($url) {
         include LINK_VIEWS.'/404.php';
         break;
 }
+
 include LINK_VIEWS.'/includes/footer.php';
