@@ -3,7 +3,7 @@ namespace src\DAO;
 use \PDO;
 
 abstract class DAO {
-    protected $con, $entity, $class;
+    protected $con, $entity;
 
     public function __construct() {
         $dsn = "mysql:host=".DB_HOST.";dbname=".DB_NAME;
