@@ -56,11 +56,13 @@ abstract class DAO {
             }
 
         }else {
+            $sqlArgs2 = "";
 
             foreach($model as $key=>$val) {
                 if($key != "id") {
                     $sqlArgs.=$key." = :$key, ";
                     $sqlBinds.= ":".$key.", ";
+                    $sqlArgs2.= $key.",";
                 }
             }
 
@@ -69,14 +71,15 @@ abstract class DAO {
             $sql = "UPDATE $this->entity SET $sqlArgs WHERE id = :id";
             $stmt = $this->con->prepare($sql);
 
+            $sqlArgs2 = rtrim($sqlArgs2, ", ");
             $sqlArgsArr = explode(", ", $sqlArgs);
+            $sqlArgs2Arr = explode(",", $sqlArgs2);
 
-            foreach($sqlArgsArr as $arg) {
-                $stmt->bindValue(":".$arg, $model->$arg);
-             }
+            foreach($sqlArgs2Arr as $val) {
+                $stmt->bindValue(":".$val, $model->$val);
+            }
 
             $stmt->bindValue(":id", $model->id);
-            
         }
 
         $stmt->execute();

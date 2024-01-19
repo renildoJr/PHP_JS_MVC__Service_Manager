@@ -13,6 +13,6 @@ class ClienteDAO extends DAO {
    }
 
    public function update(ClienteModel $model) {
-        parent::insertOrUpdate($model);
+        parent::insertOrUpdate($model, $model->id);
    }
 }
