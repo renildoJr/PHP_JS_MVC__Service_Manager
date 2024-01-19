@@ -1,5 +1,4 @@
 <?php
-
 spl_autoload_register(function (string $className){
     $class_file = str_replace('\\', '/', $className).'.php';
     if(file_exists($class_file)) {

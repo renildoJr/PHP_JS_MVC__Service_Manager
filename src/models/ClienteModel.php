@@ -1,5 +1,4 @@
 <?php
-
 namespace src\models;
 use src\DAO\ClienteDAO;
 
@@ -19,7 +18,8 @@ class ClienteModel extends Model {
 
     public function save() {
         $dao = new ClienteDAO();
-        if(empty($id)) {
+        if(empty($this->id)) {
+            var_dump($this);
             $dao->insert($this);
         }else {
             $dao->update($this);

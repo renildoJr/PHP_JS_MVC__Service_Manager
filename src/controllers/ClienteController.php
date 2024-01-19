@@ -1,7 +1,5 @@
 <?php
-
 namespace src\controllers;
-
 use src\models\ClienteModel;
 
 class ClienteController extends Controller {

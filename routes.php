@@ -1,5 +1,4 @@
 <?php 
-
 use src\controllers\ClienteController;
 
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
