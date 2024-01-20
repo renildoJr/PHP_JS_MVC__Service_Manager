@@ -12,8 +12,8 @@
     ?>
 
     <h4 class="heading hd-4 txt-center" >Informações Principais</h4>
-    <label for="input_nomeCompleto">Nome Completo</label>
     <input type="hidden" name="input_id" value="<?php if(isset($_GET["id"])){ echo $model->id; } ?>">
+    <label for="input_nomeCompleto">Nome Completo</label>
     <input type="text" name="input_nomeCompleto" id="input_nomeCompleto" placeholder="Nome completo do cliente" value="<?= hasValue($model, "nomeCompleto")?>">
     <label for="input_telefone">Telefone</label>
     <input type="number" name="input_telefone" id="input_telefone" placeholder="81912345678" value="<?= hasValue($model, "telefone")?>">

@@ -27,10 +27,10 @@
                         <li><a href="#">Cadastrar serviço</a></li>
                     </ul>
                 </li>
-                <li class="menu__dropdown"><a href="#">Serviços</a>
+                    <li class="menu__dropdown"><a href="#">Serviços</a>
                     <ul class="menu__dropdown__submenu">
-                        <li><a href="#">Lista de serviços</a></li>
-                        <li><a href="#">Cadastrar serviço</a></li>
+                        <li><a href="<?=LINK_SERVICO?>">Lista de serviços</a></li>
+                        <li><a href="<?=LINK_SERVICO?>/form">Cadastrar serviço</a></li>
                     </ul>
                 </li>
                 <li class="menu__dropdown"><a href="#">Categorias de Serviço</a>

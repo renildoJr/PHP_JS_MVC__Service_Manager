@@ -1,5 +1,6 @@
 <h1 class="heading hd-1 txt-center">Lista de Clientes</h1>
 
+<?php if($model->rows) : ?>
 <table class="table">
     <thead>
         <tr>
@@ -30,3 +31,7 @@
         <?php endforeach ?>
     </tbody>
 </table>
+<?php else : ?>
+<h4 class="txt-center">Nenhum Registro Encontrado</h4>
+
+<?php endif ?>

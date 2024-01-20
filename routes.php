@@ -1,5 +1,6 @@
 <?php 
 use src\controllers\ClienteController;
+use src\controllers\ServicoController;
 
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
@@ -17,6 +18,15 @@ switch($url) {
         break;
     case LINK_CLIENTE_FORM.'/save':
         ClienteController::save();
+        break;
+    case LINK_SERVICO:
+        ServicoController::index();
+        break;
+    case LINK_SERVICO.'/form':
+        ServicoController::form();
+        break;
+    case LINK_SERVICO.'/form/save':
+        ServicoController::save();
         break;
     default:
         include LINK_VIEWS.'/404.php';
