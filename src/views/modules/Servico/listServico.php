@@ -9,6 +9,8 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Categoria</th>
+            <th>Preço</th>
+            <th>Cálculo</th>
         </tr>
     </thead>
     <tbody>

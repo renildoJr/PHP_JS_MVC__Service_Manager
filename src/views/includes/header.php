@@ -18,7 +18,7 @@
                 <li class="menu__dropdown"><a href="#">Clientes</a>
                     <ul class="menu__dropdown__submenu">
                         <li><a href="<?=LINK_CLIENTE?>">Lista de clientes</a></li>
-                        <li><a href="<?=LINK_CLIENTE_FORM?>">Cadastrar cliente</a></li>
+                        <li><a href="<?=LINK_CLIENTE?>/form">Cadastrar cliente</a></li>
                     </ul>
                 </li>
                 <li class="menu__dropdown"><a href="#">Serviços de Clientes</a>

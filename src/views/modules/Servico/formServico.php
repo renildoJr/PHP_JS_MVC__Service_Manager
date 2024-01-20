@@ -19,6 +19,13 @@
     <input type="text" name="input_descricao" id="input_descricao" placeholder="Descrição do serviço" value="<?= hasValue($model, "descricao")?>">
     <label for="input_categoriaId">Categoria</label>
     <input type="text" name="input_categoriaId" id="input_categoriaId" placeholder="Categoria" value="<?= hasValue($model, "categoriaId")?>">
+    <label for="input_preco">Preço</label>
+    <input type="number" name="input_preco" id="input_preco" placeholder="ex: 100.00" value="<?=hasValue($model, 'preco')?>">
+    <label for="input_calculo">Cálculo</label>
+    <select name="input_calculo" id="input_calculo">
+        <option value="1" <?php if(hasValue($model, 'calculo') && $model->calculo == "1") echo "selected"; ?>>Quantidade</option>
+        <option value="2" <?php if(hasValue($model, 'calculo') && $model->calculo == "2") echo "selected"; ?>>M²</option>
+    </select>
     <!-- <div class="msg-input msg--alt msg--error">Must contain 1 uppercase letter, 1 number, min. 8 characters.</div> -->
     <input class="btn btn--primary" type="submit" value="<?= !empty($model->id) ? 'Atualizar' : 'Cadastrar'?>">
 </form>

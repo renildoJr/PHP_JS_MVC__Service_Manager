@@ -13,10 +13,10 @@ switch($url) {
     case LINK_CLIENTE:
         ClienteController::index();
         break;
-    case LINK_CLIENTE_FORM:
+    case LINK_CLIENTE.'/form':
         ClienteController::form();
         break;
-    case LINK_CLIENTE_FORM.'/save':
+    case LINK_CLIENTE.'/form/save':
         ClienteController::save();
         break;
     case LINK_SERVICO:

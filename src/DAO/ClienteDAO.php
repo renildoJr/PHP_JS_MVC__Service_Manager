@@ -8,11 +8,11 @@ class ClienteDAO extends DAO {
         $this->entity = "cliente";
     }
 
-   public function insert(ClienteModel $model) {
+   public function insert(ClienteModel $model) : void {
         parent::insertOrUpdate($model);
    }
 
-   public function update(ClienteModel $model) {
+   public function update(ClienteModel $model) : void {
         parent::insertOrUpdate($model, $model->id);
    }
 }

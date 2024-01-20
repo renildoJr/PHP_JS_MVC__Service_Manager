@@ -8,11 +8,11 @@ class ServicoDAO extends DAO {
         $this->entity = "servico";
     }
 
-   public function insert(ServicoModel $model) {
+   public function insert(ServicoModel $model) : void {
         parent::insertOrUpdate($model);
    }
 
-   public function update(ServicoModel $model) {
+   public function update(ServicoModel $model) :void {
         parent::insertOrUpdate($model, $model->id);
    }
 }

@@ -3,26 +3,27 @@ namespace src\controllers;
 use src\models\ClienteModel;
 
 class ClienteController extends Controller {
-    public static function index() {
+    public static function index() : string {
         $model = new ClienteModel();
 
         if(isset($_GET["id"])) {
             $model->delete((int) $_GET["id"]);
             header("Location: ".LINK_CLIENTE);
         }
+
         $model->getAllRows();
-        parent::render('modules/Cliente/listCliente', $model);
+        return parent::render('modules/Cliente/listCliente', $model);
     }
 
-    public static function form() {
+    public static function form() : string {
         $model = new ClienteModel();
         if(isset($_GET["id"])) {
             $model = $model->getById((int) $_GET["id"]);
         }
-        parent::render('modules/Cliente/formCliente', $model);
+        return parent::render('modules/Cliente/formCliente', $model);
     }
 
-    public static function save() {
+    public static function save() : void {
         $model = new ClienteModel();
         foreach($_POST as $key=>$value) {
             $input = str_replace("input_", "", $key);

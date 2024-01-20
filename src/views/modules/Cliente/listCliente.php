@@ -22,7 +22,7 @@
         <tr>
             <td>
                 <a href="<?=LINK_CLIENTE."?id=$row->id"?>" class="fas fa-trash-alt"></a>
-                <a href="<?=LINK_CLIENTE_FORM."?id=$row->id"?>" class="fas fa-edit"></a>
+                <a href="<?=LINK_CLIENTE."/form?id=$row->id"?>" class="fas fa-edit"></a>
             </td>
             <?php foreach($row as $val) : ?>
                 <td><?=$val?>

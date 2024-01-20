@@ -1,5 +1,5 @@
 <h1 class="heading hd-1 txt-center"><?= !empty($model->id) ? 'Atualizar Cliente' : 'Cadastrar Cliente' ?></h1>
-<form class="form" action="<?=LINK_CLIENTE_FORM?>/save" method="POST">
+<form class="form" action="<?=LINK_CLIENTE?>/form/save" method="POST">
     <header class="form__header">
         <button class="btn btn--type-text btn-close fa-solid fa-xmark"></button>
         <h3 class="heading hd-3"><?= !empty($model->id) ? explode(" ", $model->nomeCompleto)[0] : 'Novo Cliente' ?></h3>
