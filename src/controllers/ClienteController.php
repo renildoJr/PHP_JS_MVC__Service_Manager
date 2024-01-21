@@ -25,11 +25,14 @@ class ClienteController extends Controller {
 
     public static function save() : void {
         $model = new ClienteModel();
-        foreach($_POST as $key=>$value) {
-            $input = str_replace("input_", "", $key);
-            if($input == "id") $value = (int) $value;
-            $model->$input = $value;
-        }
+       
+        $model->setId((int) $_POST["input_id"]);
+        $model->setNomeCompleto((string) $_POST["input_nomeCompleto"]);
+        $model->setTelefone((int) $_POST["input_telefone"]);
+        $model->setEnd_cep((int) $_POST["input_end_cep"]);
+        $model->setEnd_num((int) $_POST["input_end_num"]);
+        $model->setEnd_comp((string) $_POST["input_end_comp"]);
+        
         $model->save();
         header("Location: ".LINK_CLIENTE);
     }

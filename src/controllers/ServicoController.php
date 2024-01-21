@@ -24,12 +24,15 @@ class ServicoController extends Controller {
     }
 
     public static function save() : void {
-        $model = new ServicoModel();;
-        foreach($_POST as $key=>$value) {
-            $input = str_replace("input_", "", $key);
-            if($input == "id") $value = (int) $value;
-            $model->$input = $value;
-        }
+        $model = new ServicoModel();;     
+        
+        $model->setId((int) $_POST["input_id"]);
+        $model->setNome((string) $_POST["input_nome"]);
+        $model->setDescricao((string) $_POST["input_descricao"]);
+        $model->setCategoriaId((int) $_POST["input_categoriaId"]);
+        $model->setPreco((float) $_POST["input_preco"]);
+        $model->setCalculo((int) $_POST["input_calculo"]);
+
         $model->save();
         header("Location: ".LINK_SERVICO);
     }

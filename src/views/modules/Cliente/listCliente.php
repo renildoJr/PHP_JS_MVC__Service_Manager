@@ -9,9 +9,9 @@
             <th>Nome Completo</th>
             <th>Telefone</th>
             <th>CEP</th>
-            <th>Rua</th>
             <th>Número</th>
             <th>Complemento</th>
+            <th>Rua</th>
             <th>Bairro</th>
             <th>Cidade</th>
             <th>Estado</th>
@@ -27,6 +27,10 @@
             <?php foreach($row as $val) : ?>
                 <td><?=$val?>
             <?php endforeach ?>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <?php endforeach ?>
     </tbody>

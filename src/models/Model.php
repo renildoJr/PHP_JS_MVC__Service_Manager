@@ -2,7 +2,7 @@
 namespace src\models;
 
 abstract class Model {
-    public int $id;
+    private int $id;
     public array $rows; 
     protected static object $dao;
 
@@ -25,5 +25,13 @@ abstract class Model {
 
     public function delete(int $id) : void {
         self::$dao->delete($id);
+    }
+
+    public function getId() : int {
+        return $this->id;
+    }
+
+    public function setId($id) : void {
+        $this->id = $id;
     }
 }
