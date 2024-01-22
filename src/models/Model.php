@@ -3,16 +3,16 @@ namespace src\models;
 
 abstract class Model {
     private int $id;
-    public array $rows; 
+    private array $rows; 
     protected static object $dao;
 
     public function getAllRows() : void {
-        $this->rows = self::$dao->select();
+        $this->setRows(self::$dao->select());
     }
 
     public function getById(int $id) : object {
         $obj = self::$dao->selectById($id);
-        return ($obj) ? $obj : new ClienteModel();
+        return ($obj) ? $obj : new ServicoModel();
     }
 
     public function save() : void {
@@ -27,11 +27,22 @@ abstract class Model {
         self::$dao->delete($id);
     }
 
-    public function getId() : int {
-        return $this->id;
+    // Getters
+    public function getId() : int | NULL {
+        return !empty($this->id) ? $this->id : NULL;
     }
 
-    public function setId($id) : void {
-        $this->id = $id;
+    public function getRows() : array | NULL {
+        return $this->rows ? $this->rows : NULL;
     }
+
+    // Setters
+    public function setId(int | string $id) : void {
+        $this->id = (int) $id;
+    }
+
+    private function setRows($rows) {
+        $this->rows = $rows;
+    }
+
 }

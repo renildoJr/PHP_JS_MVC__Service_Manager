@@ -1,6 +1,6 @@
 <h1 class="heading hd-1 txt-center">Lista de Clientes</h1>
 
-<?php if($model->rows) : ?>
+<?php if($model->getRows()) : ?>
 <table class="table">
     <thead>
         <tr>
@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($model->rows as $row) : ?>
+        <?php foreach($model->getRows() as $row) : ?>
         <tr>
             <td>
                 <a href="<?=LINK_CLIENTE."?id=$row->id"?>" class="fas fa-trash-alt"></a>

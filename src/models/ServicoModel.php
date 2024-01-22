@@ -13,40 +13,42 @@ class ServicoModel extends Model {
         parent::$dao = new ServicoDAO();
     }
 
+    // Getters
     public function getNome() : string {
-        return $this->nome;
+        return !empty($this->nome) ? $this->nome : "";
     }
-
-    public function setNome(string $nome) : void {
-        $this->nome = $nome;
-    }
-
+    
     public function getDescricao() : string {
-        return $this->descricao;
+        return !empty($this->descricao) ? $this->descricao : "";
     }
 
+    public function getCategoriaId() : int | string {
+        return !empty($this->categoriaId) ? $this->categoriaId : "";
+    }
+
+    public function getPreco() : float | string {
+        return !empty($this->preco) ? $this->preco : "";
+    }
+    
+    public function getCalculo() : int {
+        return !empty($this->calculo) ? $this->calculo : 1;
+    }
+
+    // Setters
     public function setDescricao(string $descricao) : void {
         $this->descricao = $descricao;
     }
 
-    public function getCategoriaId() : int {
-        return $this->categoriaId;
+    public function setCategoriaId(int | string $categoriaId) : void {
+        $this->categoriaId = (int) $categoriaId;
     }
-
-    public function setCategoriaId(int $categoriaId) : void {
-        $this->categoriaId = $categoriaId;
-    }
-
-    public function getPreco() : float {
-        return $this->preco;
+    
+    public function setNome(string $nome) : void {
+        $this->nome = $nome;
     }
 
     public function setPreco(float $preco) : void {
         $this->preco = $preco;
-    }
-
-    public function getCalculo() : float {
-        return $this->calculo;
     }
 
     public function setCalculo(float $calculo) : void {

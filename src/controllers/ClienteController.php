@@ -18,21 +18,15 @@ class ClienteController extends Controller {
     public static function form() : string {
         $model = new ClienteModel();
         if(isset($_GET["id"])) {
-            $model = $model->getById((int) $_GET["id"]);
+            $obj = $model->getById((int) $_GET["id"]);
+            $model = parent::setModel($model, $obj);
         }
         return parent::render('modules/Cliente/formCliente', $model);
     }
 
     public static function save() : void {
-        $model = new ClienteModel();
-       
-        $model->setId((int) $_POST["input_id"]);
-        $model->setNomeCompleto((string) $_POST["input_nomeCompleto"]);
-        $model->setTelefone((int) $_POST["input_telefone"]);
-        $model->setEnd_cep((int) $_POST["input_end_cep"]);
-        $model->setEnd_num((int) $_POST["input_end_num"]);
-        $model->setEnd_comp((string) $_POST["input_end_comp"]);
-        
+        $model = new ClienteModel();   
+        $model = parent::setModel($model, $_POST);
         $model->save();
         header("Location: ".LINK_CLIENTE);
     }

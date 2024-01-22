@@ -18,21 +18,15 @@ class ServicoController extends Controller {
     public static function form() : string {
         $model = new ServicoModel();
         if(isset($_GET["id"])) {
-            $model = $model->getById((int) $_GET["id"]);
+            $obj = $model->getById((int) $_GET["id"]);
+            $model = parent::setModel($model, $obj);
         }
         return parent::render('modules/Servico/formServico', $model);
     }
 
     public static function save() : void {
-        $model = new ServicoModel();;     
-        
-        $model->setId((int) $_POST["input_id"]);
-        $model->setNome((string) $_POST["input_nome"]);
-        $model->setDescricao((string) $_POST["input_descricao"]);
-        $model->setCategoriaId((int) $_POST["input_categoriaId"]);
-        $model->setPreco((float) $_POST["input_preco"]);
-        $model->setCalculo((int) $_POST["input_calculo"]);
-
+        $model = new ServicoModel();    
+        $model = parent::setModel($model, $_POST);
         $model->save();
         header("Location: ".LINK_SERVICO);
     }
