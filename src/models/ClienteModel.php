@@ -29,7 +29,7 @@ class ClienteModel extends Model {
     public function getEnd_num() : int | string {
         return !empty($this->end_num) ? $this->end_num : "";
     }
-            
+
     public function getEnd_comp() : string {
         return !empty($this->end_comp) ? $this->end_comp : "";
     }

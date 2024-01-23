@@ -6,11 +6,11 @@ abstract class Model {
     private array $rows; 
     protected static object $dao;
 
-    public function getAllRows() : void {
+    public function selectAllRows() : void {
         $this->setRows(self::$dao->select());
     }
 
-    public function getById(int $id) : object {
+    public function selectById(int $id) : object {
         $obj = self::$dao->selectById($id);
         return ($obj) ? $obj : new ServicoModel();
     }
