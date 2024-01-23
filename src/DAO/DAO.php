@@ -2,6 +2,9 @@
 namespace src\DAO;
 use \PDO;
 use PDOException;
+use src\models\Model;
+use ReflectionClass;
+use ReflectionMethod;
 
 abstract class DAO {
     protected object $con;
@@ -37,5 +40,68 @@ abstract class DAO {
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
+    }
+
+    protected function insertOrUpdate(Model $model) {
+        if(empty($model->getId())) {
+            // INSERT
+            $reflection = new ReflectionClass($model);
+            $methods = $reflection->getMethods(ReflectionMethod::IS_PUBLIC);
+
+            $sql = "";
+            $sqlPart1 = "";
+            $sqlPart2 = "";
+            $bindValues = [];
+
+            foreach($methods as $method) {
+                if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows') {
+                    $value = $method->invoke($model);
+                    $keyName = lcfirst(substr($method->name, 3, strlen($method->name)));
+                    $sqlPart1.=$keyName.", ";
+                    $sqlPart2.="?, ";
+                    array_push($bindValues, $value);
+                }
+            }
+
+            $sqlPart1 = trim($sqlPart1, ", ");
+            $sqlPart2 = trim($sqlPart2, ", ");
+
+            $sql = "INSERT INTO $this->entity ($sqlPart1) VALUES ($sqlPart2)";
+            $stmt = $this->con->prepare($sql);
+
+            for($i = 0; $i < count($bindValues); $i++) {
+                $stmt->bindValue($i + 1, $bindValues[$i]);
+            } 
+
+            $stmt->execute();
+        }else {
+            // UPDATE
+            $reflection = new ReflectionClass($model);
+            $methods = $reflection->getMethods(ReflectionMethod::IS_PUBLIC);
+
+            $sql = "";
+            $sqlPart = "";
+            $bindValues = [];
+
+            foreach($methods as $method) {
+                if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows') {
+                        $value = $method->invoke($model);
+                        $keyName = lcfirst(substr($method->name, 3, strlen($method->name)));
+                        $sqlPart.=$keyName." = ?, ";
+                        array_push($bindValues, $value);
+                }
+            }
+
+            $sqlPart = trim($sqlPart, ", ");
+            $sql = "UPDATE $this->entity SET $sqlPart WHERE id = ?";
+            $stmt = $this->con->prepare($sql);
+
+            for($i = 0; $i < count($bindValues); $i++) {
+                $stmt->bindValue($i + 1, $bindValues[$i]);
+            }
+
+            $stmt->bindValue(count($bindValues) + 1, $model->getId());
+            $stmt->execute();
+        }
     }
 }
