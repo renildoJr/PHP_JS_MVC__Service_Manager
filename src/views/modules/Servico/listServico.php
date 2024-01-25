@@ -1,5 +1,4 @@
 <h1 class="heading hd-1 txt-center">Lista de Serviços</h1>
-
 <?php if($model->getRows()) : ?>
 <table class="table">
     <thead>
@@ -29,5 +28,4 @@
 </table>
 <?php else : ?>
 <h4 class="txt-center">Nenhum Registro Encontrado</h4>
-
 <?php endif ?>

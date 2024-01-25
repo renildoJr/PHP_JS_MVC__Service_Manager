@@ -1,36 +1,34 @@
 <?php 
-use src\controllers\ClienteController;
-use src\controllers\ServicoController;
-
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+$constants = get_defined_constants(true)['user'];
+$links = [];
 
-include LINK_VIEWS.'/includes/header.php';
-
-switch($url) {
-    case '/':
-        include LINK_VIEWS.'/home.php';
-        break;
-    case LINK_CLIENTE:
-        ClienteController::index();
-        break;
-    case LINK_CLIENTE.'/form':
-        ClienteController::form();
-        break;
-    case LINK_CLIENTE.'/form/save':
-        ClienteController::save();
-        break;
-    case LINK_SERVICO:
-        ServicoController::index();
-        break;
-    case LINK_SERVICO.'/form':
-        ServicoController::form();
-        break;
-    case LINK_SERVICO.'/form/save':
-        ServicoController::save();
-        break;
-    default:
-        include LINK_VIEWS.'/404.php';
-        break;
+foreach($constants as $name=>$val) {
+    if(strpos($name, "LINK_") === 0) {
+        $controller =  "src\controllers\\".ucfirst(strtolower(substr($name, 5, strlen($name))))."Controller";
+        $links[$val] = [$val, $controller];
+    }
 }
 
-include LINK_VIEWS.'/includes/footer.php';
+$link = '/'.explode("/", $url)[1];
+$Controller = $links[$link][1];
+
+include PATH_VIEWS.'/includes/header.php';
+switch($url) {
+    case '/':
+        include PATH_VIEWS.'/home.php';
+        break;
+    case $link:
+        $Controller::index();
+        break;
+    case $link.'/form':
+        $Controller::form();
+        break;
+    case $link.'/form/save':
+        $Controller::save();
+        break;
+    default:
+        include PATH_VIEWS.'/404.php';
+        break;
+}
+include PATH_VIEWS.'/includes/footer.php';

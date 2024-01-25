@@ -11,14 +11,14 @@ class ClienteController extends Controller {
             header("Location: ".LINK_CLIENTE);
         }
 
-        $model->getAllRows();
+        $model->selectAllRows();
         return parent::render('modules/Cliente/listCliente', $model);
     }
 
     public static function form() : string {
         $model = new ClienteModel();
         if(isset($_GET["id"])) {
-            $obj = $model->getById((int) $_GET["id"]);
+            $obj = $model->selectById((int) $_GET["id"]);
             $model = parent::setModel($model, $obj);
         }
         return parent::render('modules/Cliente/formCliente', $model);

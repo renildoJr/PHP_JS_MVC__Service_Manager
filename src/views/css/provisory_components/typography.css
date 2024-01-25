@@ -1,0 +1,26 @@
+/*
+-------------
+Typography
+-------------
+*/
+.heading {
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.heading.hd-1 {
+   font-size: 4rem;
+}
+
+
+.heading.hd-3 {
+    font-size: 2rem;
+}
+
+.small-text {
+    font-size: 1.3rem;
+}
+
+.txt-center {
+    text-align: center;
+}

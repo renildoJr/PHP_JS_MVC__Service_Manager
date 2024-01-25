@@ -1,0 +1,22 @@
+.footer {
+    background: var(--color-background2);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-top: var(--default-margin);
+}
+
+.footer .container {
+    min-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .copy {
+    color: var(--color-text2);
+}
+
+.footer .copy a {
+    color: var(--color-text2);
+}

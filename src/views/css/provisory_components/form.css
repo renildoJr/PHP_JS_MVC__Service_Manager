@@ -1,0 +1,78 @@
+/* 
+-----------------
+Forms 
+-----------------
+*/
+
+.form input:focus {
+    outline-color: var(--color-primary1);
+}
+
+.form {
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 16px;
+    background: var(--color-background1);
+    box-shadow: 0 0 8px 1px #0000002c;
+    margin-top: 50px;
+}
+
+.form .msg-input.msg--alt {
+    margin-top: -20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.form label,
+.form input {
+    display: block;
+}
+
+.form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form input,
+.form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--color-background3);
+    border-radius: 8px;
+}
+
+.form p {
+    color: var(--color-text3);
+    text-align: center;
+}
+
+.form__header {
+    position: relative;
+    border-bottom: 1px solid var(--form-border1);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.form__header__title {
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.form__footer {
+    border-top: 1px solid var(--form-border1);
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
