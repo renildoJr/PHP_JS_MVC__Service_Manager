@@ -4,6 +4,7 @@ spl_autoload_register(function (string $className){
     if(file_exists($class_file)) {
         include $class_file;
     }else {
-       exit("<div class='msg-top msg--error'>Erro: Arquivo da classe não encontrado.</div>");
+        echo "$class_file<br>";
+        exit("<div class='msg-top msg--error'>Erro: Arquivo da classe não encontrado.</div>");
     }
 });

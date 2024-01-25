@@ -5,3 +5,4 @@ define("PATH_VIEWS", dirname(__FILE__)."/src/views");
 // LINKS 
 define('LINK_CLIENTE', '/cliente');
 define('LINK_SERVICO', '/servico');
+define('LINK_CATEGORIA_SERVICO', '/categoriaServico');

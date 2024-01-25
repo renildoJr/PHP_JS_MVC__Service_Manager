@@ -35,8 +35,8 @@
                 </li>
                 <li class="menu__dropdown"><a href="#">Categorias de Serviço</a>
                     <ul class="menu__dropdown__submenu">
-                        <li><a href="#">Lista de fornecedores</a></li>
-                        <li><a href="#">Cadastrar fornecedor</a></li>
+                        <li><a href="<?=LINK_CATEGORIA_SERVICO?>">Listar Categorias</a></li>
+                        <li><a href="<?=LINK_CATEGORIA_SERVICO?>/form">Cadastrar Categoria</a></li>
                     </ul>
                 </li>
                 <li class="menu__dropdown"><a href="#">Fornecedores</a>
