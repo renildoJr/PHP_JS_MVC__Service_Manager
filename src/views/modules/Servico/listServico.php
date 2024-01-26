@@ -19,8 +19,18 @@
                 <a href="<?=LINK_SERVICO."?id=$row->id"?>" class="fas fa-trash-alt"></a>
                 <a href="<?=LINK_SERVICO."/form?id=$row->id"?>" class="fas fa-edit"></a>
             </td>
-            <?php foreach($row as $val) : ?>
-                <td><?=$val?>
+            <?php foreach($row as $key=>$val) : ?>
+                <?php if($key !== "categoriaId") :?>
+                    <td><?=$val?>
+                <?php else : 
+                    foreach($model->getCategoriaRows() as $catg) : 
+                        if($catg->id == $val) {?>
+                            <td><?=$catg->nome?></td>
+                        <?php }
+                    ?>
+                <?php 
+                    endforeach;
+                endif ?>
             <?php endforeach ?>
         </tr>
         <?php endforeach ?>

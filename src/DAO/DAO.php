@@ -52,7 +52,7 @@ abstract class DAO {
         $bindValues = [];
     
         foreach($methods as $method) {
-            if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows') {
+            if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows' && $method->name != 'getCategoriaRows') {
                 $value = $method->invoke($model);
                 $keyName = lcfirst(substr($method->name, 3, strlen($method->name)));
                 $sqlPart1.=$keyName.", ";
@@ -83,18 +83,18 @@ abstract class DAO {
         $bindValues = [];
     
         foreach($methods as $method) {
-            if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows') {
-                    $value = $method->invoke($model);
-                    $keyName = lcfirst(substr($method->name, 3, strlen($method->name)));
-                    $sqlPart.=$keyName." = ?, ";
-                    array_push($bindValues, $value);
+            if(strpos($method->name, 'get') === 0 && $method->name != 'getId' && $method->name != 'getRows' && $method->name != 'getCategoriaRows') {
+                $value = $method->invoke($model);
+                $keyName = lcfirst(substr($method->name, 3, strlen($method->name)));
+                $sqlPart.=$keyName." = ?, ";
+                array_push($bindValues, $value);
             }
         }
-    
+        
         $sqlPart = trim($sqlPart, ", ");
         $sql = "UPDATE $this->entity SET $sqlPart WHERE id = ?";
         $stmt = $this->con->prepare($sql);
-    
+
         for($i = 0; $i < count($bindValues); $i++) {
             $stmt->bindValue($i + 1, $bindValues[$i]);
         }

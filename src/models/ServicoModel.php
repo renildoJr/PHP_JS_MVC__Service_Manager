@@ -1,6 +1,7 @@
 <?php
 namespace src\models;
 use src\DAO\ServicoDAO;
+use src\models\CategoriaServicoModel;
 
 class ServicoModel extends Model {
     private string $nome;
@@ -8,12 +9,21 @@ class ServicoModel extends Model {
     private int $categoriaId;
     private float $preco;
     private int $calculo;
+    private array $catgRows;
 
     public function __construct() {
+        $catgModel = new CategoriaServicoModel();
+        $catgModel->selectAllRows();
+        $this->setCategoriaRows($catgModel->getRows());
         parent::$dao = new ServicoDAO();
+
     }
 
     // Getters
+    public function getCategoriaRows() : array {
+        return $this->catgRows;
+    }
+
     public function getNome() : string {
         return !empty($this->nome) ? $this->nome : "";
     }
@@ -35,6 +45,10 @@ class ServicoModel extends Model {
     }
 
     // Setters
+    public function setCategoriaRows($catgRows) {
+        $this->catgRows = $catgRows;
+    }
+
     public function setDescricao(string $descricao) : void {
         $this->descricao = $descricao;
     }

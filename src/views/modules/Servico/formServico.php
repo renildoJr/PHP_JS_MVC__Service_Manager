@@ -12,7 +12,7 @@
     <input type="text" name="descricao" id="descricao" placeholder="Descrição do serviço" value="<?=$model->getDescricao()?>">
     <label for="categoriaId">Categoria</label>
     <select name="categoriaId" id="categoriaId">
-        <?php foreach($modelCatg as $catgRow) : ?>
+        <?php foreach($model->getCategoriaRows() as $catgRow) : ?>
             <option value="<?= $catgRow->id ?>" <?= $catgRow->id == $model->getCategoriaId() ? "selected" : "" ?>><?=$catgRow->nome?></option>            
         <?php endforeach ?>
     </select>

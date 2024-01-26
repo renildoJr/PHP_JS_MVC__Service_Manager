@@ -44,5 +44,4 @@ abstract class Model {
     private function setRows($rows) {
         $this->rows = $rows;
     }
-
 }
