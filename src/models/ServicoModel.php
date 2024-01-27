@@ -16,7 +16,6 @@ class ServicoModel extends Model {
         $catgModel->selectAllRows();
         $this->setCategoriaRows($catgModel->getRows());
         parent::$dao = new ServicoDAO();
-
     }
 
     // Getters

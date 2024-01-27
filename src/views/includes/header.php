@@ -41,11 +41,22 @@
                 </li>
                 <li class="menu__dropdown"><a href="#">Fornecedores</a>
                     <ul class="menu__dropdown__submenu">
-                        <li><a href="#">Lista de fornecedores</a></li>
-                        <li><a href="#">Cadastrar fornecedor</a></li>
+                        <li><a href="<?=LINK_FORNECEDOR?>">Lista de fornecedores</a></li>
+                        <li><a href="<?=LINK_FORNECEDOR?>/form">Cadastrar fornecedor</a></li>
                     </ul>
                 </li>
-                </ul>
+                <li class="menu__dropdown"><a href="#">Produtos</a>
+                    <ul class="menu__dropdown__submenu">
+                        <li><a href="<?=LINK_PRODUTO?>">Lista de Produtos</a></li>
+                        <li><a href="<?=LINK_PRODUTO?>/form">Cadastrar Produto</a></li>
+                    </ul>
+                </li>
+                <li class="menu__dropdown"><a href="#">Categoria de Produtos</a>
+                    <ul class="menu__dropdown__submenu">
+                        <li><a href="<?=LINK_CATEGORIA_PRODUTO?>">Lista de Categorias</a></li>
+                        <li><a href="<?=LINK_CATEGORIA_PRODUTO?>/form">Cadastrar Categoria</a></li>
+                    </ul>
+                </li>
             </nav>
         </div>
     </header>

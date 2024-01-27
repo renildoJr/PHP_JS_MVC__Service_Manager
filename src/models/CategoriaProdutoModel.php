@@ -1,24 +1,24 @@
 <?php
 namespace src\models;
-use src\DAO\CategoriaServicoDAO;
+use src\DAO\CategoriaProdutoDAO;
 
-class CategoriaServicoModel extends Model {
+class CategoriaProdutoModel extends Model {
     private string $nome;
     private string $descricao;
 
     public function __construct() {
-        parent::$dao = new CategoriaServicoDAO();
+        parent::$dao = new CategoriaProdutoDAO();
     }
-
+    
     // Getters
-    public function getNome() : ?string {
+    public function getNome() : string {
         return !empty($this->nome) ? $this->nome : "";
     }
     
-    public function getDescricao() : ?string {
+    public function getDescricao() : string {
         return !empty($this->descricao) ? $this->descricao : "";
     }
-    
+
     // Setters
     public function setDescricao(string $descricao) : void {
         $this->descricao = $descricao;
