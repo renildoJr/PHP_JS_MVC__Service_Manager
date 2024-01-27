@@ -1,3 +1,10 @@
+<?php 
+// Adaptar este array para a classe ServicoController 
+$calculosList = [
+    "1" => "Quantidade",
+    "2" => "M²"
+]
+?>
 <h1 class="heading hd-1 txt-center">Lista de Serviços</h1>
 <?php if($model->getRows()) : ?>
 <table class="table">
@@ -20,11 +27,11 @@
                 <a href="<?=LINK_SERVICO."/form?id=$row->id"?>" class="fas fa-edit"></a>
             </td>
             <?php foreach($row as $key=>$val) : ?>
-                <?php if($key !== "categoriaId") :?>
+                <?php if($key !== "categoriaId" && $key !== "calculo") :?>
                     <td><?=$val?>
                 <?php else : 
                     foreach($model->getCategoriaRows() as $catg) : 
-                        if($catg->id == $val) {?>
+                        if($catg->id == $val && $key !== "calculo") {?>
                             <td><?=$catg->nome?></td>
                         <?php }
                     ?>
@@ -32,6 +39,7 @@
                     endforeach;
                 endif ?>
             <?php endforeach ?>
+            <td><?=$calculosList[$row->calculo]?></td>
         </tr>
         <?php endforeach ?>
     </tbody>

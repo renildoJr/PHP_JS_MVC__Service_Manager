@@ -1,3 +1,10 @@
+<?php 
+// Adaptar este array para a classe ServicoController 
+$calculosList = [
+    "Quantidade" => 1,
+    "M²" => 2
+]
+?>
 <h1 class="heading hd-1 txt-center"><?= ($model->getId()) ? 'Atualizar Serviço' : 'Cadastrar Serviço' ?></h1>
 <form class="form" action="<?=LINK_SERVICO?>/form/save" method="POST">
     <header class="form__header">
@@ -12,6 +19,12 @@
     <input type="text" name="descricao" id="descricao" placeholder="Descrição do serviço" value="<?=$model->getDescricao()?>">
     <label for="categoriaId">Categoria</label>
     <select name="categoriaId" id="categoriaId">
+
+
+        <!-- Implementar esta lógica utilizando o evento OnChange() -->
+        <option value="null"><a href="<?=LINK_CATEGORIA_SERVICO?>?new=true"><strong>Nova Categoria <i class="fa-solid fa-plus"></i></strong></a></option>
+
+
         <?php foreach($model->getCategoriaRows() as $catgRow) : ?>
             <option value="<?= $catgRow->id ?>" <?= $catgRow->id == $model->getCategoriaId() ? "selected" : "" ?>><?=$catgRow->nome?></option>            
         <?php endforeach ?>
@@ -20,8 +33,9 @@
     <input type="number" name="preco" id="preco" placeholder="ex: 100.00" value="<?=$model->getPreco()?>" step=".01">
     <label for="calculo">Cálculo</label>
     <select name="calculo" id="calculo">
-        <option value="1" <?= $model->getPreco() && $model->getCalculo() == "1" ? "selected" : "" ?>>Quantidade</option>
-        <option value="2" <?= $model->getPreco() && $model->getCalculo() == "2" ? "selected" : "" ?>>M²</option>
+        <?php foreach($calculosList as $calc=>$val) : ?>
+        <option value="<?=$val?>" <?= $model->getCalculo() === $val ? "selected" : ""?>><?=$calc?></option>
+        <?php endforeach ?>
     </select>
     <input class="btn btn--primary" type="submit" value="<?= ($model->getId()) ? 'Atualizar' : 'Cadastrar'?>">
 </form>
