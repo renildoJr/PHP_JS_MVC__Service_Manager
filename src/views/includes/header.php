@@ -45,6 +45,12 @@
                         <li><a href="<?=LINK_FORNECEDOR?>/form">Cadastrar fornecedor</a></li>
                     </ul>
                 </li>
+                <li class="menu__dropdown"><a href="#">Produtos de fornecedores</a>
+                    <ul class="menu__dropdown__submenu">
+                        <li><a href="<?=LINK_FORNECEDOR_PRODUTO?>">Lista de fornecedores</a></li>
+                        <li><a href="<?=LINK_FORNECEDOR_PRODUTO?>/form">Cadastrar fornecedor</a></li>
+                    </ul>
+                </li>
                 <li class="menu__dropdown"><a href="#">Produtos</a>
                     <ul class="menu__dropdown__submenu">
                         <li><a href="<?=LINK_PRODUTO?>">Lista de Produtos</a></li>

@@ -18,7 +18,7 @@ $calculosList = [
     <label for="descricao">Descrição</label>
     <input type="text" name="descricao" id="descricao" placeholder="Descrição do serviço" value="<?=$model->getDescricao()?>">
     <label for="categoriaId">Categoria</label>
-    <select name="categoriaId" id="categoriaId">
+    <select name="categoriaId" class="select" id="categoriaId">
 
 
         <!-- Implementar esta lógica utilizando o evento OnChange() -->

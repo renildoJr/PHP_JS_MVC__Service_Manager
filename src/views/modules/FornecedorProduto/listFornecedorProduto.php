@@ -1,4 +1,5 @@
-<h1 class="heading hd-1 txt-center">Lista de Fornecedores</h1>
+<h1 class="heading hd-1 txt-center">Lista de Produtos de :::NOME DO FORNECEDOR:::</h1>
+<?php var_dump($model->getRows()) ?>
 <?php if($model->getRows()) : ?>
 <table class="table">
     <thead>
@@ -12,15 +13,7 @@
     </thead>
     <tbody>
         <?php foreach($model->getRows() as $row) : ?>
-        <tr>
-            <td>
-                <a href="<?=LINK_FORNECEDOR."?id=$row->id"?>" class="fas fa-trash-alt"></a>
-                <a href="<?=LINK_FORNECEDOR."/form?id=$row->id"?>" class="fas fa-edit"></a>
-            </td>
-            <td><?=$row->id?></td>
-            <td><?=$row->nome?></td>
-            <td><?=$row->descricao?></td>
-        </tr>
+        
         <?php endforeach ?>
     </tbody>
 </table>
