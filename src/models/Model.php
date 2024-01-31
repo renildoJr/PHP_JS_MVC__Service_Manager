@@ -6,8 +6,8 @@ abstract class Model {
     private array $rows; 
     protected static object $dao;
 
-    public function selectAllRows() : void {
-        $this->setRows(self::$dao->select());
+    public function selectAllRows(bool $join = false, string $entity2 = "", string $entity3 = "") : void {
+        $this->setRows(self::$dao->select($join, $entity2, $entity3));
     }
 
     public function selectById(int $id) : object {

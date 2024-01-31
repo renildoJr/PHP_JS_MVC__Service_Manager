@@ -11,7 +11,7 @@ class FornecedorProdutoController extends Controller {
             header("Location: ".LINK_FORNECEDOR_PRODUTO);
         }
 
-        $model->selectAllRows();
+        $model->selectAllRows(true, "fornecedor", "produto");
         return parent::render('modules/FornecedorProduto/listFornecedorProduto', $model);
     }
 
