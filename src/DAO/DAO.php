@@ -22,7 +22,7 @@ abstract class DAO {
 
     public function select(bool $join = false, string $entity2 = "", string $entity3 = "") : array {
         if($join && $entity2 && $entity3) {
-            $sql = "SELECT $entity2.nome AS tituloFornecedor, GROUP_CONCAT($entity3.nome) AS produtos_fornecidos
+            $sql = "SELECT $entity2.nome AS tituloFornecedor, GROUP_CONCAT(DISTINCT $entity3.id, $entity3.nome) AS produtos_fornecidos
                 FROM $entity2
                 JOIN $this->entity ON $entity2.id = $this->entity.{$entity2}Id
                 LEFT JOIN $entity3 ON $this->entity.{$entity3}Id = {$entity3}Id

@@ -7,15 +7,36 @@ $model = $model->getRows();
 ?>
 
 <?php if($model) : ?>
-<table class="table">
     <?php for($i = 0; $i < count($model); $i++) : ?>
-        <h2><?=$model[$i]->tituloFornecedor?></h2>
-        <table>
+        <h2 style="text-align: center;"><?=$model[$i]->tituloFornecedor?></h2>
+        <table class="table">
             <thead>
                 <tr>
-                    <th><?=$model[$i]->produtos_fornecidos?></th>
+                    <th>Id</th>
+                    <th>Produtos</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php
+                if($model[$i]->produtos_fornecidos) {
+                    $prods = explode(",", $model[$i]->produtos_fornecidos);
+                    foreach($prods as $prod) {
+                        $prodId = substr($prod, 0, 1);
+                        $prodName = substr($prod, 1, strlen($prod));
+                        echo "<tr>";
+                            echo "<td>".$prodId."</td>";
+                            echo "<td>".$prodName."</td>";
+                            echo "<td><a href=".LINK_PRODUTO."/form?id=$prodId>Editar </a><a href='#remover'>Remover desta lista</a></td>";
+                        echo "</tr>";
+                    }
+                }else {
+                    echo "<tr>";
+                        echo "<td colspan='3'>Não há produtos desse fornecedor</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
         </table>
     <?php endfor ?>
 <?php else : ?>
