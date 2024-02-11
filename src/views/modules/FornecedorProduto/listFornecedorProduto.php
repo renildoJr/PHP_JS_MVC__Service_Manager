@@ -1,44 +1,31 @@
-<h1 class="heading hd-1 txt-center">Lista de Produtos de :::NOME DO FORNECEDOR:::</h1>
+<h1 class="heading hd-1 txt-center">Lista de Fornecedores e Seus Produtos</h1>
 
-<?php 
-
-$model = $model->getRows();
-
-?>
 
 <?php if($model) : ?>
-    <?php for($i = 0; $i < count($model); $i++) : ?>
-        <h2 style="text-align: center;"><?=$model[$i]->tituloFornecedor?></h2>
+    <?php foreach($model as $row) : ?>
+
+        <h2 style="text-align: center;"><?=$row["fornecedor"]["nome"]?></h2>
         <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Produtos</th>
-                    <th>Ações</th>
+                    <th colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if($model[$i]->produtos_fornecidos) {
-                    $prods = explode(",", $model[$i]->produtos_fornecidos);
-                    foreach($prods as $prod) {
-                        $prodId = substr($prod, 0, 1);
-                        $prodName = substr($prod, 1, strlen($prod));
-                        echo "<tr>";
-                            echo "<td>".$prodId."</td>";
-                            echo "<td>".$prodName."</td>";
-                            echo "<td><a href=".LINK_PRODUTO."/form?id=$prodId>Editar </a><a href='#remover'>Remover desta lista</a></td>";
-                        echo "</tr>";
-                    }
-                }else {
-                    echo "<tr>";
-                        echo "<td colspan='3'>Não há produtos desse fornecedor</td>";
-                    echo "</tr>";
-                }
-                ?>
+                <?php foreach($row["produtos"] as $prod) : ?>
+                    <tr>
+                        <td><?=$prod["id"]?></td>
+                        <td><?=$prod["nome"]?></td>
+                        <td title="Editar este produto"><a href="<?=LINK_PRODUTO."/form?id=".$prod["id"]?>">Editar </a></td>
+                        <!-- Alterar o código abaixo posteriormente -->
+                        <td title="Remover deste fornecedor"><a href="<?=LINK_FORNECEDOR_PRODUTO."/form?id=".$prod["id"]?>">Remover desta lista</a></td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
-    <?php endfor ?>
+    <?php endforeach ?>
 <?php else : ?>
 <h4 class="txt-center">Nenhum Registro Encontrado</h4>
 <?php endif ?>
